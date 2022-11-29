@@ -2,14 +2,14 @@ html , body{
     margin : 0;
     height: 100vh;
     width: 100vw;
-    background-color: rgb(145, 226, 226);
     display: flex;
     flex-direction: column
 
 }
 
 @mixin button {
-    
+    opacity: 0.6;
+    transition: opacity 0.15s linear;
 }
 
 .box{
@@ -51,25 +51,31 @@ html , body{
     aspect-ratio: 0.95/1;
     &--red{
         background-color: red;
-        opacity: 0.6;
-        transition: opacity 0.15s linear;
+        @include button;
     }
     &--green{
         background-color: rgb(0, 255, 0);
-        opacity: 0.6;
-        transition: opacity 0.15s linear;
+        @include button;
     }
     &--blue{
         background-color: blue;
-        opacity: 0.6;
-        transition: opacity 0.15s linear;
+        @include button;
     }
     &--yellow{
         background-color: yellow;
-        opacity: 0.6;
-        transition: opacity 0.15s linear;
+        @include button;
     }
     &--light{
         opacity: 1;
+    }
+}
+
+.background{
+    background: rgb(145, 226, 226);
+    &--false{
+        background: rgb(225, 93, 93);
+    }
+    &--true{
+        background:rgb(100, 202, 100);
     }
 }
