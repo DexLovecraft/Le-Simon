@@ -1,6 +1,7 @@
 let btn = document.getElementsByClassName('button')
 let pressValue = []
 let colorList = []
+let score = 0
 
 const getRandomInt = (max) => {
     return colorList.push(Math.floor(Math.random() * max));
@@ -25,33 +26,26 @@ const newGame = () => {
     randomFlash(2)
 }
 
-const PressingButton = (number) => {
-  btn[number].addEventListener('click', (e) => {
-      btn[number].classList.toggle('button--light')
-      setTimeout(() =>{
-        btn[number].classList.toggle('button--light')
-      },300)
-      return pressValue.push(number)
-  });
-}
-
-PressingButton(0)
-PressingButton(1)
-PressingButton(2)
-PressingButton(3)
 
 newGame()
 console.log(colorList)
 
-const PressCompare = (number) => {
+const Game = (number) => {
+    console.log(colorList)
     btn[number].addEventListener('click', (e) => {
-        console.log(pressValue)
+        btn[number].classList.toggle('button--light')
+      setTimeout(() =>{
+        btn[number].classList.toggle('button--light')
+      },300)
+      pressValue.push(number)
+      console.log(pressValue)
         if (pressValue.length == 1)
             if (colorList[0] == pressValue[0]){
                 document.getElementsByClassName('background')[0].classList.toggle('background--true')
                 setTimeout(() =>{
                     document.getElementsByClassName('background')[0].classList.toggle('background--true')
                   },300)
+                  score = score + 100
             }
             else{
                 document.getElementsByClassName('background')[0].classList.toggle('background--false')
@@ -60,6 +54,7 @@ const PressCompare = (number) => {
                   },300)
                 pressValue = []
                 colorList = []
+                score = 0
                 newGame()
             }
         if (pressValue.length == 2)
@@ -68,6 +63,7 @@ const PressCompare = (number) => {
                 setTimeout(() =>{
                     document.getElementsByClassName('background')[0].classList.toggle('background--true')
                   },300)
+                  score = score + 200
             }
             else{
                 document.getElementsByClassName('background')[0].classList.toggle('background--false')
@@ -76,6 +72,7 @@ const PressCompare = (number) => {
                   },300)
                 pressValue = []
                 colorList = []
+                score = 0
                 newGame()
             }
         if (pressValue.length == 3)
@@ -84,6 +81,7 @@ const PressCompare = (number) => {
                 setTimeout(() =>{
                     document.getElementsByClassName('background')[0].classList.toggle('background--true')
                   },300)
+                  score = score * 2 
                 setTimeout(() =>  {
                     pressValue = []
                     colorList = []
@@ -97,12 +95,14 @@ const PressCompare = (number) => {
                   },300)
                 pressValue = []
                 colorList = []
+                score = 0
                 newGame()
             }
+        document.getElementsByClassName('score__number')[0].innerHTML = score
     })
 }
 
 for (let i = 0; i < 4; i++) {
-    PressCompare(i)
+    Game(i)
 }
 
