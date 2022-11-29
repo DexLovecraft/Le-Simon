@@ -1,10 +1,3 @@
-@mixin center{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
-}
-
 html , body{
     margin : 0;
     height: 100vh;
@@ -34,8 +27,8 @@ html , body{
         aspect-ratio: 2/1;
         margin-left: auto;
         margin-right: auto;
-        border-top-right-radius: 10% 100px;
-        border-top-left-radius: 10% 100px;
+        border-top-right-radius: 100px;
+        border-top-left-radius: 100px;
         display: flex;
         justify-content: space-between;
         overflow: hidden;
@@ -45,8 +38,8 @@ html , body{
         aspect-ratio: 2/1;
         margin-left: auto;
         margin-right: auto;
-        border-bottom-right-radius: 10% 100px;
-        border-bottom-left-radius: 10% 100px;
+        border-bottom-right-radius:  100px;
+        border-bottom-left-radius: 100px;
         display: flex;
         justify-content: space-between;
         overflow: hidden;
@@ -60,32 +53,23 @@ html , body{
         background-color: red;
         opacity: 0.6;
         transition: opacity 0.15s linear;
-        &:hover{
-            opacity: 1;
-        }
     }
     &--green{
         background-color: rgb(0, 255, 0);
         opacity: 0.6;
         transition: opacity 0.15s linear;
-        &:hover{
-            opacity: 1;
-        }
     }
     &--blue{
         background-color: blue;
         opacity: 0.6;
         transition: opacity 0.15s linear;
-        &:hover{
-            opacity: 1;
-        }
     }
     &--yellow{
         background-color: yellow;
         opacity: 0.6;
         transition: opacity 0.15s linear;
-        &:hover{
-            opacity: 1;
-        }
+    }
+    &--light{
+        opacity: 1;
     }
 }
