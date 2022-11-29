@@ -41,10 +41,6 @@ const Game = (number) => {
       console.log(pressValue)
         if (pressValue.length == 1)
             if (colorList[0] == pressValue[0]){
-                document.getElementsByClassName('background')[0].classList.toggle('background--true')
-                setTimeout(() =>{
-                    document.getElementsByClassName('background')[0].classList.toggle('background--true')
-                  },300)
                   score = score + 100
             }
             else{
@@ -59,10 +55,6 @@ const Game = (number) => {
             }
         if (pressValue.length == 2)
             if (colorList[1] == pressValue[1]){
-                document.getElementsByClassName('background')[0].classList.toggle('background--true')
-                setTimeout(() =>{
-                    document.getElementsByClassName('background')[0].classList.toggle('background--true')
-                  },300)
                   score = score + 200
             }
             else{
