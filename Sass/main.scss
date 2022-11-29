@@ -58,14 +58,34 @@ html , body{
     aspect-ratio: 0.95/1;
     &--red{
         background-color: red;
+        opacity: 0.6;
+        transition: opacity 0.15s linear;
+        &:hover{
+            opacity: 1;
+        }
     }
     &--green{
         background-color: rgb(0, 255, 0);
+        opacity: 0.6;
+        transition: opacity 0.15s linear;
+        &:hover{
+            opacity: 1;
+        }
     }
     &--blue{
         background-color: blue;
+        opacity: 0.6;
+        transition: opacity 0.15s linear;
+        &:hover{
+            opacity: 1;
+        }
     }
     &--yellow{
         background-color: yellow;
+        opacity: 0.6;
+        transition: opacity 0.15s linear;
+        &:hover{
+            opacity: 1;
+        }
     }
 }
