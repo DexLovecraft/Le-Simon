@@ -36,7 +36,7 @@ const newGame = (step) => {
         for(i = 0; i != 3; i++){
             getRandomInt(4)
         }
-        console.log('depart '+ colorList)
+        //console.log('depart '+ colorList)
         sequence(colorList)
         
     }
@@ -45,7 +45,7 @@ const newGame = (step) => {
     }
     else{
         getRandomInt(4)
-        console.log('etape +1 '+ colorList)
+        //console.log('etape +1 '+ colorList)
         sequence(colorList)
     }
 }
@@ -57,7 +57,7 @@ const sequence = (list) => {
     }
     setTimeout(() => {
        game(i)
-    },1150 * step)
+    },1100 * step)
 }
 
 //series of four function who do the same, they enlight the respective button, push they're index into pressValue and trigger The verifcation function
@@ -68,8 +68,8 @@ const sequence = (list) => {
     },300)
     pressValue.push(0)
     if(pressValue.length == step){
-      console.log('pret pour verif')
-      console.log(pressValue)
+      //console.log('pret pour verif')
+      //console.log(pressValue)
       Verif()
     }
 }
@@ -81,8 +81,8 @@ const sequence = (list) => {
     },300)
     pressValue.push(1)
     if(pressValue.length == step){
-      console.log('pret pour verif')
-      console.log(pressValue)
+      //console.log('pret pour verif')
+      //console.log(pressValue)
       Verif()
     }
 }
@@ -94,8 +94,8 @@ const sequence = (list) => {
     },300)
     pressValue.push(2)
     if(pressValue.length == step){
-      console.log('pret pour verif')
-      console.log(pressValue)
+      //console.log('pret pour verif')
+      //console.log(pressValue)
       Verif()
     }
 }
@@ -107,8 +107,8 @@ const greenClick = () => {
     },300)
     pressValue.push(3)
     if(pressValue.length == step){
-      console.log('pret pour verif')
-      console.log(pressValue)
+      //console.log('pret pour verif')
+      //console.log(pressValue)
       Verif()
     }
 }
@@ -135,7 +135,7 @@ const win = () => {
       document.getElementsByClassName('background')[0].classList.toggle('background--true')
     },300)
     pressValue = []
-    score = score + 100
+    score = (score + (100 * (step - 1)))
     scoreDisplay()
     setTimeout(() => {
       newGame(step)
@@ -145,7 +145,7 @@ const win = () => {
 //after user reach seven good input in a row, this function restart the game at three step with addition of score.
 const replay = () => {
   step = 3
-  score = score * 1.5
+  score = score * 2
   scoreDisplay()
   pressValue = []
   colorList = []
