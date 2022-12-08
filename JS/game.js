@@ -1,31 +1,120 @@
-let btn = document.getElementsByClassName('button')
-let pressValue = []
-let colorList = []
+// Declaration of variables 
+
+let pressValue = [] // user input list
+let colorList = [] // list to compare with input
+let red = document.getElementById('red')
+let green = document.getElementById('green')
+let yellow = document.getElementById('yellow')
+let blue = document.getElementById('blue')
+let btn = document.getElementsByClassName('button') // DOM element useful fot functions
+let step = 3 
 let score = 0
-let gameStep = 3
+let check = false // game mechanics variable 
 
+//functions declaration
+
+// Function to random a list of number, push into colorList
 const getRandomInt = (max) => {
-    return colorList.push(Math.floor(Math.random() * max));
-    
-}
+    return colorList.push(Math.floor(Math.random() * max));   
+} 
 
-const randomFlash = (number) => {
-  setTimeout(() => {
-      btn[colorList[number]].classList.toggle('button--light')
-      setTimeout(() =>{
-        btn[colorList[number]].classList.toggle('button--light')
-      },600)
-    }, 1150 * number + 1)
-}
-
-const newGame = () => {
-  for (let i = 0; i != gameStep ; i++){
-    getRandomInt(4)
-    randomFlash(i)
+// Function who flash button with the random generated number
+const randomFlash = (index) => {
+    setTimeout(() => {
+        btn[colorList[index]].classList.toggle('button--light')
+        setTimeout(() =>{
+          btn[colorList[index]].classList.toggle('button--light')
+        },600)
+      }, 1150 * index + 1)
   }
-    console.log(colorList)
+
+
+  // Trigger function to the game who check in which phase of game user is 
+const newGame = (step) => {
+    if (step <= 3){
+        colorList = []
+        for(i = 0; i != 3; i++){
+            getRandomInt(4)
+        }
+        console.log('depart '+ colorList)
+        sequence(colorList)
+        
+    }
+    else if (step > 7){
+        console.log('end')
+    }
+    else{
+        getRandomInt(4)
+        console.log('etape +1 '+ colorList)
+        sequence(colorList)
+    }
 }
 
+//function that call random Flash and after lauch the game
+const sequence = (list) => {
+    for (nbr in list){
+        randomFlash(nbr)
+    }
+    setTimeout(() => {
+       game(i)
+    },1150 * step)
+}
+
+//series of four function who do the same, they enlight the respective button, push they're index into pressValue and trigger The verifcation function
+ const redClick = () => {
+      red.classList.toggle('button--light')
+    setTimeout(() =>{
+      red.classList.toggle('button--light')
+    },300)
+    pressValue.push(0)
+    if(pressValue.length == step){
+      console.log('pret pour verif')
+      console.log(pressValue)
+      Verif()
+    }
+}
+
+ const yellowClick = () => {
+    yellow.classList.toggle('button--light')
+    setTimeout(() =>{
+      yellow.classList.toggle('button--light')
+    },300)
+    pressValue.push(1)
+    if(pressValue.length == step){
+      console.log('pret pour verif')
+      console.log(pressValue)
+      Verif()
+    }
+}
+
+ const blueClick = () => {
+    blue.classList.toggle('button--light')
+    setTimeout(() =>{
+      blue.classList.toggle('button--light')
+    },300)
+    pressValue.push(2)
+    if(pressValue.length == step){
+      console.log('pret pour verif')
+      console.log(pressValue)
+      Verif()
+    }
+}
+
+const greenClick = () => {
+    green.classList.toggle('button--light')
+    setTimeout(() =>{
+      green.classList.toggle('button--light')
+    },300)
+    pressValue.push(3)
+    if(pressValue.length == step){
+      console.log('pret pour verif')
+      console.log(pressValue)
+      Verif()
+    }
+}
+
+
+//the two function if the user win or lose at the game. that flash the background in function and they both trigger newGame but with different reinit. 
 const lose = () => {
   document.getElementsByClassName('background')[0].classList.toggle('background--false')
   setTimeout(() =>{
@@ -33,55 +122,59 @@ const lose = () => {
     },300)
    pressValue = []
    colorList = []
-    score = 0
-    gameStep = 3
-    console.log(gameStep)
-    newGame()
+   setTimeout(() => {
+    newGame(step)
+  },1000)
 }
 
-newGame()
-
-const Game = (number, gamestepnum) => {
-    btn[number].addEventListener('click', (e) => {
-        btn[number].classList.toggle('button--light')
-      setTimeout(() =>{
-        btn[number].classList.toggle('button--light')
-      },300)
-      pressValue.push(number)
-      if (pressValue.length == gamestepnum){
-        if (colorList[gamestepnum - 1] == pressValue[gamestepnum - 1]){
-          document.getElementsByClassName('background')[0].classList.toggle('background--true')
-          setTimeout(() =>{
-              document.getElementsByClassName('background')[0].classList.toggle('background--true')
-            },300)
-            score = score * 2 
-          setTimeout(() =>  {
-              pressValue = []
-              colorList = []
-              newGame()
-          }, 1000) 
-          gameStep = gameStep + 1  
-        }
-        else{
-          lose()
-        }
-      }
-
-      for(let i = 0; i < gamestepnum; i++) {
-      if (pressValue.length == (i +1))
-          if (colorList[i] == pressValue[i]){
-                score = score + 100
-           }
-          else{
-             lose()
-          }
-      }
-        document.getElementsByClassName('score__number')[0].innerHTML = score
-        console.log(gamestepnum + 'debut detape')
-        console.log(gameStep + 'etape globale')
-    })
+const win = () => {
+    document.getElementsByClassName('background')[0].classList.toggle('background--true')
+    setTimeout(() =>{
+      document.getElementsByClassName('background')[0].classList.toggle('background--true')
+    },300)
+    pressValue = []
+    setTimeout(() => {
+      newGame(step)
+    },1000)
+    
 }
 
-for (let i = 0; i < 4; i++) {
-    Game(i, gameStep)
+const game = () => {
+  // independant event for removal later
+  red.addEventListener('click', redClick)
+  yellow.addEventListener('click', yellowClick)
+  blue.addEventListener('click', blueClick)
+  green.addEventListener('click', greenClick)
 }
+
+const Verif = () => {
+  // remove of event
+  red.removeEventListener('click', redClick)
+  yellow.removeEventListener('click', yellowClick)
+  blue.removeEventListener('click', blueClick)
+  green.removeEventListener('click', greenClick)
+  // verification of input and outputt
+  check = false
+
+  for (let i = 0 ; i < pressValue.length + 1; i++){
+    if(pressValue.every((value, index) => value === colorList[index])){ // this if is for array comparaison
+      ok = true
+    }
+    else{
+      ok = false
+    }
+  }
+  if(ok == true){
+    step = step + 1
+    win()
+  }
+  else if(ok == false){
+    step = 3
+    lose()
+  }
+}
+
+//launch of new game
+setTimeout(() => {
+  newGame(step)
+}, 2000)
