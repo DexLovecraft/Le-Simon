@@ -41,7 +41,7 @@ const newGame = (step) => {
         
     }
     else if (step > 7){
-        console.log('end')
+        replay()
     }
     else{
         getRandomInt(4)
@@ -122,6 +122,8 @@ const lose = () => {
     },300)
    pressValue = []
    colorList = []
+   score = 0 
+   scoreDisplay()
    setTimeout(() => {
     newGame(step)
   },1000)
@@ -133,11 +135,24 @@ const win = () => {
       document.getElementsByClassName('background')[0].classList.toggle('background--true')
     },300)
     pressValue = []
+    score = score + 100
+    scoreDisplay()
     setTimeout(() => {
       newGame(step)
     },1000)
-    
 }
+
+//after user reach seven good input in a row, this function restart the game at three step with addition of score.
+const replay = () => {
+  step = 3
+  score = score * 1.5
+  scoreDisplay()
+  pressValue = []
+  colorList = []
+  setTimeout(() => {
+    newGame(step)
+  },1000)
+} 
 
 const game = () => {
   // independant event for removal later
@@ -173,6 +188,11 @@ const Verif = () => {
     lose()
   }
 }
+
+//Display scdore on web page
+const scoreDisplay = () => {
+  document.getElementsByClassName('score__number')[0].innerHTML = score
+} 
 
 //launch of new game
 setTimeout(() => {
