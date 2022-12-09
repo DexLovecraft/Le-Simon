@@ -13,10 +13,26 @@ html , body{
     transition: opacity 0.15s linear;
 }
 
+.logo{
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+.game{
+    display: flex;
+    flex-direction: column-reverse;
+    @media (min-width: 768px) {
+        flex-direction: column;
+    }
+}
+
 .box{
     justify-content: center;
     margin: auto;
-    width: clamp(220px , 45% , 1250px);
+    width: clamp(220px , 45% , 950px);
     aspect-ratio: 1/1;
     background-color: rgb(49, 49, 49);
     border-radius: 10%;
@@ -81,7 +97,26 @@ html , body{
     }
 }
 
-.score{
-    margin: auto;
-    font-size: 2rem;
+.info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 20px auto auto auto;
+    font-size: 1.2rem;
+    @media (min-width: 1024px) {
+        flex-direction: row;
+        font-size: 1.7rem;
+    }
+    &__child{
+        padding: 0 20px;
+    }
+    &__border{
+        @media (min-width: 1024px){
+            border-right: 4px solid black;
+            border-left: 4px solid black;
+        }
+    }
 }
+
+//768
