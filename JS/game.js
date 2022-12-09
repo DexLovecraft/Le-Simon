@@ -9,7 +9,10 @@ let blue = document.getElementById('blue')
 let btn = document.getElementsByClassName('button') // DOM element useful fot functions
 let step = 3 
 let score = 0
-let check = false // game mechanics variable 
+let check = false
+let numberOfsequence = 0
+let highscore = 0
+// game mechanics variable 
 
 //functions declaration
 
@@ -122,7 +125,11 @@ const lose = () => {
     },300)
    pressValue = []
    colorList = []
+   if(score > highscore){
+    highscore = score
+   }
    score = 0 
+   numberOfsequence = 0
    scoreDisplay()
    setTimeout(() => {
     newGame(step)
@@ -146,6 +153,7 @@ const win = () => {
 const replay = () => {
   step = 3
   score = score * 2
+  numberOfsequence = numberOfsequence + 1 
   scoreDisplay()
   pressValue = []
   colorList = []
@@ -192,6 +200,8 @@ const Verif = () => {
 //Display scdore on web page
 const scoreDisplay = () => {
   document.getElementsByClassName('score__number')[0].innerHTML = score
+  document.getElementsByClassName('step__number')[0].innerHTML = numberOfsequence
+  document.getElementsByClassName('highscore__number')[0].innerHTML = highscore
 } 
 
 //launch of new game
