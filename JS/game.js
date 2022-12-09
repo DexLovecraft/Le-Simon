@@ -66,10 +66,10 @@ const sequence = (list) => {
 //series of four function who do the same, they enlight the respective button, push they're index into pressValue and trigger The verifcation function
  const redClick = () => {
       red.classList.toggle('button--light')
-      red.classList.toggle('button--pressed')
+      red.classList.toggle('button--press')
     setTimeout(() =>{
       red.classList.toggle('button--light')
-      red.classList.toggle('button--pressed')
+      red.classList.toggle('button--press')
     },300)
     pressValue.push(0)
     if(pressValue.length == step){
@@ -81,10 +81,10 @@ const sequence = (list) => {
 
  const yellowClick = () => {
     yellow.classList.toggle('button--light')
-    yellow.classList.toggle('button--pressed')
+    yellow.classList.toggle('button--press')
     setTimeout(() =>{
       yellow.classList.toggle('button--light')
-      yellow.classList.toggle('button--pressed')
+      yellow.classList.toggle('button--press')
     },300)
     pressValue.push(1)
     if(pressValue.length == step){
@@ -96,10 +96,10 @@ const sequence = (list) => {
 
  const blueClick = () => {
     blue.classList.toggle('button--light')
-    blue.classList.toggle('button--pressed')
+    blue.classList.toggle('button--press')
     setTimeout(() =>{
       blue.classList.toggle('button--light')
-      blue.classList.toggle('button--pressed')
+      blue.classList.toggle('button--press')
     },300)
     pressValue.push(2)
     if(pressValue.length == step){
@@ -111,10 +111,10 @@ const sequence = (list) => {
 
 const greenClick = () => {
     green.classList.toggle('button--light')
-    green.classList.toggle('button--pressed')
+    green.classList.toggle('button--press')
     setTimeout(() =>{
       green.classList.toggle('button--light')
-      green.classList.toggle('button--pressed')
+      green.classList.toggle('button--press')
     },300)
     pressValue.push(3)
     if(pressValue.length == step){
@@ -141,7 +141,7 @@ const lose = () => {
    scoreDisplay()
    setTimeout(() => {
     newGame(step)
-  },1000)
+  },1500)
 }
 
 const win = () => {
@@ -154,7 +154,7 @@ const win = () => {
     scoreDisplay()
     setTimeout(() => {
       newGame(step)
-    },1000)
+    },1500)
 }
 
 //after user reach seven good input in a row, this function restart the game at three step with addition of score.
@@ -167,7 +167,7 @@ const replay = () => {
   colorList = []
   setTimeout(() => {
     newGame(step)
-  },1000)
+  },1500)
 } 
 
 const game = () => {
