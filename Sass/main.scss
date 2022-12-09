@@ -10,7 +10,7 @@ html , body{
 
 @mixin button {
     opacity: 0.45;
-    transition: opacity 0.15s linear;
+    transition: opacity 0.10s linear, scale 0.10s ease-in-out;
 }
 
 .logo{
@@ -44,8 +44,6 @@ html , body{
         aspect-ratio: 2/1;
         margin-left: auto;
         margin-right: auto;
-        border-top-right-radius: 100px;
-        border-top-left-radius: 100px;
         display: flex;
         justify-content: space-between;
         overflow: hidden;
@@ -55,8 +53,6 @@ html , body{
         aspect-ratio: 2/1;
         margin-left: auto;
         margin-right: auto;
-        border-bottom-right-radius:  100px;
-        border-bottom-left-radius: 100px;
         display: flex;
         justify-content: space-between;
         overflow: hidden;
@@ -68,22 +64,29 @@ html , body{
     aspect-ratio: 0.95/1;
     &--red{
         background-color: red;
+        border-top-left-radius: 100px;
         @include button;
     }
     &--green{
         background-color: rgb(0, 255, 0);
+        border-bottom-right-radius: 100px;
         @include button;
     }
     &--blue{
         background-color: blue;
+        border-bottom-left-radius: 100px;
         @include button;
     }
     &--yellow{
         background-color: yellow;
+        border-top-right-radius:  100px;
         @include button;
     }
     &--light{
         opacity: 1;
+    }
+    &--pressed{
+        scale: 0.95;
     }
 }
 

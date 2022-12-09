@@ -66,8 +66,10 @@ const sequence = (list) => {
 //series of four function who do the same, they enlight the respective button, push they're index into pressValue and trigger The verifcation function
  const redClick = () => {
       red.classList.toggle('button--light')
+      red.classList.toggle('button--pressed')
     setTimeout(() =>{
       red.classList.toggle('button--light')
+      red.classList.toggle('button--pressed')
     },300)
     pressValue.push(0)
     if(pressValue.length == step){
@@ -79,8 +81,10 @@ const sequence = (list) => {
 
  const yellowClick = () => {
     yellow.classList.toggle('button--light')
+    yellow.classList.toggle('button--pressed')
     setTimeout(() =>{
       yellow.classList.toggle('button--light')
+      yellow.classList.toggle('button--pressed')
     },300)
     pressValue.push(1)
     if(pressValue.length == step){
@@ -92,8 +96,10 @@ const sequence = (list) => {
 
  const blueClick = () => {
     blue.classList.toggle('button--light')
+    blue.classList.toggle('button--pressed')
     setTimeout(() =>{
       blue.classList.toggle('button--light')
+      blue.classList.toggle('button--pressed')
     },300)
     pressValue.push(2)
     if(pressValue.length == step){
@@ -105,8 +111,10 @@ const sequence = (list) => {
 
 const greenClick = () => {
     green.classList.toggle('button--light')
+    green.classList.toggle('button--pressed')
     setTimeout(() =>{
       green.classList.toggle('button--light')
+      green.classList.toggle('button--pressed')
     },300)
     pressValue.push(3)
     if(pressValue.length == step){
