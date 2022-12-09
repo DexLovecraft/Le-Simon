@@ -70,7 +70,7 @@ const sequence = (list) => {
     setTimeout(() =>{
       red.classList.toggle('button--light')
       red.classList.toggle('button--press')
-    },300)
+    },200)
     pressValue.push(0)
     if(pressValue.length == step){
       //console.log('pret pour verif')
@@ -85,7 +85,7 @@ const sequence = (list) => {
     setTimeout(() =>{
       yellow.classList.toggle('button--light')
       yellow.classList.toggle('button--press')
-    },300)
+    },200)
     pressValue.push(1)
     if(pressValue.length == step){
       //console.log('pret pour verif')
@@ -100,7 +100,7 @@ const sequence = (list) => {
     setTimeout(() =>{
       blue.classList.toggle('button--light')
       blue.classList.toggle('button--press')
-    },300)
+    },200)
     pressValue.push(2)
     if(pressValue.length == step){
       //console.log('pret pour verif')
@@ -115,7 +115,7 @@ const greenClick = () => {
     setTimeout(() =>{
       green.classList.toggle('button--light')
       green.classList.toggle('button--press')
-    },300)
+    },200)
     pressValue.push(3)
     if(pressValue.length == step){
       //console.log('pret pour verif')
