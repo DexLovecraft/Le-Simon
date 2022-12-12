@@ -1,7 +1,7 @@
 // Declaration of variables 
 
-let pressValue = [] // user input list
-let colorList = [] // list to compare with input
+let userSequenceInput = [] // user input list
+let sequenceAnswer = [] // list to compare with input
 let red = document.getElementById('red')
 let green = document.getElementById('green')
 let yellow = document.getElementById('yellow')
@@ -216,3 +216,6 @@ const scoreDisplay = () => {
 setTimeout(() => {
   newGame(step)
 }, 2000)
+
+
+// compariason en cours de jeux + verification dans les event 
