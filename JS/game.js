@@ -6,8 +6,9 @@ let red = document.getElementById('red')
 let green = document.getElementById('green')
 let yellow = document.getElementById('yellow')
 let blue = document.getElementById('blue')
-let btn = document.getElementsByClassName('button') // DOM element useful fot functions
-let step = 3 
+let buttons = document.getElementsByClassName('button') // DOM element useful fot functions
+let roundStep = 3 
+let numberOfClick = -1
 let score = 0
 let check = false
 let numberOfsequence = 0
@@ -16,40 +17,40 @@ let highscore = 0
 
 //functions declaration
 
-// Function to random a list of number, push into colorList
+// Function to random a list of number, push into sequenceAnswer
 const getRandomInt = (max) => {
-    return colorList.push(Math.floor(Math.random() * max));   
+    return sequenceAnswer.push(Math.floor(Math.random() * max));   
 } 
 
 // Function who flash button with the random generated number
 const randomFlash = (index) => {
     setTimeout(() => {
-        btn[colorList[index]].classList.toggle('button--light')
+      buttons[sequenceAnswer[index]].classList.toggle('button--light')
         setTimeout(() =>{
-          btn[colorList[index]].classList.toggle('button--light')
+          buttons[sequenceAnswer[index]].classList.toggle('button--light')
         },600)
       }, 1150 * index + 1)
   }
 
 
   // Trigger function to the game who check in which phase of game user is 
-const newGame = (step) => {
-    if (step <= 3){
-        colorList = []
+const newGame = (roundStep) => {
+    if (roundStep <= 3){
+      sequenceAnswer = []
         for(i = 0; i != 3; i++){
             getRandomInt(4)
         }
-        //console.log('depart '+ colorList)
-        sequence(colorList)
+        //console.log('depart '+ sequenceAnswer)
+        sequence(sequenceAnswer)
         
     }
-    else if (step > 7){
+    else if (roundStep > 7){
         replay()
     }
     else{
         getRandomInt(4)
-        //console.log('etape +1 '+ colorList)
-        sequence(colorList)
+        //console.log('etape +1 '+ sequenceAnswer)
+        sequence(sequenceAnswer)
     }
 }
 
@@ -60,10 +61,10 @@ const sequence = (list) => {
     }
     setTimeout(() => {
        game(i)
-    },1100 * step)
+    },1100 * roundStep)
 }
 
-//series of four function who do the same, they enlight the respective button, push they're index into pressValue and trigger The verifcation function
+//series of four function who do the same, they enlight the respective button, push they're index into userSequenceInput and trigger The verifcation function
  const redClick = () => {
       red.classList.toggle('button--light')
       red.classList.toggle('button--press')
@@ -71,12 +72,27 @@ const sequence = (list) => {
       red.classList.toggle('button--light')
       red.classList.toggle('button--press')
     },200)
-    pressValue.push(0)
-    if(pressValue.length == step){
-      //console.log('pret pour verif')
-      //console.log(pressValue)
-      Verif()
+    userSequenceInput.push(0)
+    numberOfClick = numberOfClick + 1
+
+    if(sequenceAnswer[numberOfClick] !== userSequenceInput[numberOfClick]){
+      roundStep = 3
+      numberOfClick = -1
+      lose()
     }
+    else if(userSequenceInput.length == roundStep){
+      if(userSequenceInput.every((value, index) => value === sequenceAnswer[index])){
+        numberOfClick = -1
+        roundStep = roundStep + 1
+        win()
+      }
+      else{
+        roundStep = 3
+        numberOfClick = -1
+        lose()
+      }
+    }
+    
 }
 
  const yellowClick = () => {
@@ -86,11 +102,25 @@ const sequence = (list) => {
       yellow.classList.toggle('button--light')
       yellow.classList.toggle('button--press')
     },200)
-    pressValue.push(1)
-    if(pressValue.length == step){
-      //console.log('pret pour verif')
-      //console.log(pressValue)
-      Verif()
+    userSequenceInput.push(1)
+    numberOfClick = numberOfClick + 1
+
+    if(sequenceAnswer[numberOfClick] !== userSequenceInput[numberOfClick]){
+      roundStep = 3
+      numberOfClick = -1
+      lose()
+    }
+    else if(userSequenceInput.length == roundStep){
+      if(userSequenceInput.every((value, index) => value === sequenceAnswer[index])){
+        numberOfClick = -1
+        roundStep = roundStep + 1
+        win()
+      }
+      else{
+        roundStep = 3
+        numberOfClick = -1
+        lose()
+      }
     }
 }
 
@@ -101,11 +131,25 @@ const sequence = (list) => {
       blue.classList.toggle('button--light')
       blue.classList.toggle('button--press')
     },200)
-    pressValue.push(2)
-    if(pressValue.length == step){
-      //console.log('pret pour verif')
-      //console.log(pressValue)
-      Verif()
+    userSequenceInput.push(2)
+    numberOfClick = numberOfClick + 1
+
+    if(sequenceAnswer[numberOfClick] !== userSequenceInput[numberOfClick]){
+      roundStep = 3
+      numberOfClick = -1
+      lose()
+    }
+    else if(userSequenceInput.length == roundStep){
+      if(userSequenceInput.every((value, index) => value === sequenceAnswer[index])){
+        numberOfClick = -1
+        roundStep = roundStep + 1
+        win()
+      }
+      else{
+        roundStep = 3
+        numberOfClick = -1
+        lose()
+      }
     }
 }
 
@@ -116,11 +160,25 @@ const greenClick = () => {
       green.classList.toggle('button--light')
       green.classList.toggle('button--press')
     },200)
-    pressValue.push(3)
-    if(pressValue.length == step){
-      //console.log('pret pour verif')
-      //console.log(pressValue)
-      Verif()
+    userSequenceInput.push(3)
+    numberOfClick = numberOfClick + 1
+
+    if(sequenceAnswer[numberOfClick] !== userSequenceInput[numberOfClick]){
+      roundStep = 3
+      numberOfClick = -1
+      lose()
+    }
+    else if(userSequenceInput.length == roundStep){
+      if(userSequenceInput.every((value, index) => value === sequenceAnswer[index])){
+        numberOfClick = -1
+        roundStep = roundStep + 1
+        win()
+      }
+      else{
+        roundStep = 3
+        numberOfClick = -1
+        lose()
+      }
     }
 }
 
@@ -131,8 +189,8 @@ const lose = () => {
   setTimeout(() =>{
       document.getElementsByClassName('background')[0].classList.toggle('background--false')
     },300)
-   pressValue = []
-   colorList = []
+    userSequenceInput = []
+   sequenceAnswer = []
    if(score > highscore){
     highscore = score
    }
@@ -140,7 +198,7 @@ const lose = () => {
    numberOfsequence = 0
    scoreDisplay()
    setTimeout(() => {
-    newGame(step)
+    newGame(roundStep)
   },1500)
 }
 
@@ -149,24 +207,24 @@ const win = () => {
     setTimeout(() =>{
       document.getElementsByClassName('background')[0].classList.toggle('background--true')
     },300)
-    pressValue = []
-    score = (score + (100 * (step - 1)))
+    userSequenceInput = []
+    score = (score + (100 * (roundStep - 1)))
     scoreDisplay()
     setTimeout(() => {
-      newGame(step)
+      newGame(roundStep)
     },1500)
 }
 
 //after user reach seven good input in a row, this function restart the game at three step with addition of score.
 const replay = () => {
-  step = 3
+  roundStep = 3
   score = score * 2
   numberOfsequence = numberOfsequence + 1 
   scoreDisplay()
-  pressValue = []
-  colorList = []
+  userSequenceInput = []
+  sequenceAnswer = []
   setTimeout(() => {
-    newGame(step)
+    newGame(roundStep)
   },1500)
 } 
 
@@ -178,7 +236,7 @@ const game = () => {
   green.addEventListener('click', greenClick)
 }
 
-const Verif = () => {
+/*const Verif = () => {
   // remove of event
   red.removeEventListener('click', redClick)
   yellow.removeEventListener('click', yellowClick)
@@ -187,8 +245,8 @@ const Verif = () => {
   // verification of input and outputt
   check = false
 
-  for (let i = 0 ; i < pressValue.length + 1; i++){
-    if(pressValue.every((value, index) => value === colorList[index])){ // this if is for array comparaison
+  for (let i = 0 ; i < userSequenceInput.length + 1; i++){
+    if(userSequenceInput.every((value, index) => value === sequenceAnswer[index])){ // this if is for array comparaison
       ok = true
     }
     else{
@@ -196,14 +254,14 @@ const Verif = () => {
     }
   }
   if(ok == true){
-    step = step + 1
+    roundStep = roundStep + 1
     win()
   }
   else if(ok == false){
-    step = 3
+    roundStep = 3
     lose()
   }
-}
+}*/
 
 //Display scdore on web page
 const scoreDisplay = () => {
@@ -214,7 +272,7 @@ const scoreDisplay = () => {
 
 //launch of new game
 setTimeout(() => {
-  newGame(step)
+  newGame(roundStep)
 }, 2000)
 
 
