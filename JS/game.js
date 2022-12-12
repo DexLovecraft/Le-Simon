@@ -185,6 +185,7 @@ const greenClick = () => {
 
 //the two function if the user win or lose at the game. that flash the background in function and they both trigger newGame but with different reinit. 
 const lose = () => {
+  eventRemover()
   document.getElementsByClassName('background')[0].classList.toggle('background--false')
   setTimeout(() =>{
       document.getElementsByClassName('background')[0].classList.toggle('background--false')
@@ -203,6 +204,7 @@ const lose = () => {
 }
 
 const win = () => {
+  eventRemover()
     document.getElementsByClassName('background')[0].classList.toggle('background--true')
     setTimeout(() =>{
       document.getElementsByClassName('background')[0].classList.toggle('background--true')
@@ -236,32 +238,12 @@ const game = () => {
   green.addEventListener('click', greenClick)
 }
 
-/*const Verif = () => {
-  // remove of event
+const eventRemover = () => {
   red.removeEventListener('click', redClick)
   yellow.removeEventListener('click', yellowClick)
   blue.removeEventListener('click', blueClick)
   green.removeEventListener('click', greenClick)
-  // verification of input and outputt
-  check = false
-
-  for (let i = 0 ; i < userSequenceInput.length + 1; i++){
-    if(userSequenceInput.every((value, index) => value === sequenceAnswer[index])){ // this if is for array comparaison
-      ok = true
-    }
-    else{
-      ok = false
-    }
-  }
-  if(ok == true){
-    roundStep = roundStep + 1
-    win()
-  }
-  else if(ok == false){
-    roundStep = 3
-    lose()
-  }
-}*/
+}
 
 //Display scdore on web page
 const scoreDisplay = () => {
