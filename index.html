@@ -6,20 +6,28 @@
     <link rel="stylesheet" href="./Public/css/style.css">
     <title>Le Simon</title>
 </head>
-<body>
+<body id="AAAA" class="background">
     <header>
-        <H1>Le Simon</H1>
+        <img class="logo" src="./Public/Images/logo.svg" alt="logo">
     </header>
-    <div class="box">
-        <div class="box__top">
-            <div class="button button--red" id="red"></div>
-            <div class="button button--yellow" id="yellow"></div>
+    <div class="game">
+        <div class="box">
+            <div class="box__top">
+                <div class="button button--red" id="red"></div>
+                <div class="button button--yellow" id="yellow"></div>
+            </div>
+            <div class="box__bottom">
+                <div class="button button--blue" id="blue"></div>
+                <div class="button button--green" id="green"></div>
+            </div>
         </div>
-        <div class="box__bottom">
-            <div class="button button--blue" id="blue"></div>
-            <div class="button button--green" id="green"></div>
+        <div class="info">
+            <div class="info__child"><p>Votre Record est <span class="highscore__number">0</span></p></div>
+            <div class="info__child info__border"><p>Vous avez fait <span class="step__number">0</span> séquence(s) à la suite</p></div>
+            <div class="info__child "><p>Vous avez <span class="score__number">0</span> points</p></div>
         </div>
     </div>
+
 </body>
 <footer>
     <script src="./JS/game.js"></script>

@@ -2,20 +2,37 @@ html , body{
     margin : 0;
     height: 100vh;
     width: 100vw;
-    background-color: rgb(145, 226, 226);
     display: flex;
-    flex-direction: column
+    flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif; 
 
 }
 
 @mixin button {
-    
+    opacity: 0.45;
+    transition: opacity 0.10s linear, scale 0.10s ease-in-out;
+}
+
+.logo{
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+.game{
+    display: flex;
+    flex-direction: column-reverse;
+    @media (min-width: 768px) {
+        flex-direction: column;
+    }
 }
 
 .box{
     justify-content: center;
     margin: auto;
-    width: clamp(220px , 45% , 1250px);
+    width: clamp(220px , 45% , 950px);
     aspect-ratio: 1/1;
     background-color: rgb(49, 49, 49);
     border-radius: 10%;
@@ -27,8 +44,6 @@ html , body{
         aspect-ratio: 2/1;
         margin-left: auto;
         margin-right: auto;
-        border-top-right-radius: 100px;
-        border-top-left-radius: 100px;
         display: flex;
         justify-content: space-between;
         overflow: hidden;
@@ -38,8 +53,6 @@ html , body{
         aspect-ratio: 2/1;
         margin-left: auto;
         margin-right: auto;
-        border-bottom-right-radius:  100px;
-        border-bottom-left-radius: 100px;
         display: flex;
         justify-content: space-between;
         overflow: hidden;
@@ -51,25 +64,62 @@ html , body{
     aspect-ratio: 0.95/1;
     &--red{
         background-color: red;
-        opacity: 0.6;
-        transition: opacity 0.15s linear;
+        border-top-left-radius: 100px;
+        @include button;
     }
     &--green{
         background-color: rgb(0, 255, 0);
-        opacity: 0.6;
-        transition: opacity 0.15s linear;
+        border-bottom-right-radius: 100px;
+        @include button;
     }
     &--blue{
         background-color: blue;
-        opacity: 0.6;
-        transition: opacity 0.15s linear;
+        border-bottom-left-radius: 100px;
+        @include button;
     }
     &--yellow{
         background-color: yellow;
-        opacity: 0.6;
-        transition: opacity 0.15s linear;
+        border-top-right-radius:  100px;
+        @include button;
     }
     &--light{
         opacity: 1;
     }
+    &--press{
+        scale: 0.985;
+    }
 }
+
+.background{
+    background: rgb(145, 226, 226);
+    &--false{
+        background: rgb(225, 93, 93);
+    }
+    &--true{
+        background:rgb(100, 202, 100);
+    }
+}
+
+.info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 20px auto auto auto;
+    font-size: 1.2rem;
+    @media (min-width: 1024px) {
+        flex-direction: row;
+        font-size: 1.7rem;
+    }
+    &__child{
+        padding: 0 20px;
+    }
+    &__border{
+        @media (min-width: 1024px){
+            border-right: 4px solid black;
+            border-left: 4px solid black;
+        }
+    }
+}
+
+//768
