@@ -84,58 +84,6 @@ const verif = () => {
   }
 }
 
-//series of four function who do the same, they enlight the respective button, push they're index into userSequenceInput and trigger The verifcation function
-
-/*const redClick = () => {
-      red.classList.toggle('button--light')
-      red.classList.toggle('button--press')
-    setTimeout(() =>{
-      red.classList.toggle('button--light')
-      red.classList.toggle('button--press')
-    },200)
-    userSequenceInput.push(0)
-    numberOfClick = numberOfClick + 1
-    verif()
-    
-}
-
- const yellowClick = () => {
-    yellow.classList.toggle('button--light')
-    yellow.classList.toggle('button--press')
-    setTimeout(() =>{
-      yellow.classList.toggle('button--light')
-      yellow.classList.toggle('button--press')
-    },200)
-    userSequenceInput.push(1)
-    numberOfClick = numberOfClick + 1
-    verif()
-}
-
- const blueClick = () => {
-    blue.classList.toggle('button--light')
-    blue.classList.toggle('button--press')
-    setTimeout(() =>{
-      blue.classList.toggle('button--light')
-      blue.classList.toggle('button--press')
-    },200)
-    userSequenceInput.push(2)
-    numberOfClick = numberOfClick + 1
-    verif()
-}
-
-const greenClick = () => {
-    green.classList.toggle('button--light')
-    green.classList.toggle('button--press')
-    setTimeout(() =>{
-      green.classList.toggle('button--light')
-      green.classList.toggle('button--press')
-    },200)
-    userSequenceInput.push(3)
-    numberOfClick = numberOfClick + 1
-    verif()
-}*/
-
-
 //the two function if the user win or lose at the game. that flash the background in function and they both trigger newGame but with different reinit. 
 const lose = () => {
   eventRemover()
@@ -183,20 +131,6 @@ const replay = () => {
   },1500)
 } 
 
-/*const game = () => {
-  // independant event for removal later
-  red.addEventListener('click', redClick)
-  yellow.addEventListener('click', yellowClick)
-  blue.addEventListener('click', blueClick)
-  green.addEventListener('click', greenClick)
-}
-
-const eventRemover = () => {
-  for (const color of colors) {
-    const button = document.querySelector(`#${color}`)
-    button.removeEventListener('click', handleColorButtonClick)
-  }
-}*/
 const colors = ['red', 'yellow', 'blue', 'green', 'orange', 'purple', 'pink', 'teal', 'maroon']
 
 const colorClick = (color) => {

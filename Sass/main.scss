@@ -62,25 +62,86 @@ html , body{
 .button{
     height: 100%;
     aspect-ratio: 0.95/1;
+    Copy code
     &--red{
-        background-color: red;
-        border-top-left-radius: 100px;
-        @include button;
-    }
-    &--green{
-        background-color: rgb(0, 255, 0);
-        border-bottom-right-radius: 100px;
-        @include button;
-    }
-    &--blue{
-        background-color: blue;
-        border-bottom-left-radius: 100px;
-        @include button;
+    background-color: #FF0000;
+    border-top-left-radius: 100px;
+    @include button;
     }
     &--yellow{
-        background-color: yellow;
-        border-top-right-radius:  100px;
-        @include button;
+    background-color: #FFFF00;
+    border-top-left-radius: 100px;
+    @include button;
+    }
+    &--blue{
+    background-color: #0000FF;
+    border-top-left-radius: 100px;
+    @include button;
+    }
+    &--green{
+    background-color: #008000;
+    border-top-left-radius: 100px;
+    @include button;
+    }
+    &--orange{
+    background-color: #FFA500;
+    border-top-left-radius: 100px;
+    @include button;
+    }
+    &--purple{
+    background-color: #800080;
+    border-top-left-radius: 100px;
+    @include button;
+    }
+    &--pink{
+    background-color: #FF00FF;
+    border-top-left-radius: 100px;
+    @include button;
+    }
+    &--teal{
+    background-color: #00FFFF;
+    border-top-left-radius: 100px;
+    @include button;
+    }
+    &--maroon{
+    background-color: #800000;
+    border-top-left-radius: 100px;
+    @include button;
+    }
+    &--grey{
+    background-color: #808080;
+    border-top-left-radius: 100px;
+    @include button;
+    }
+    &--bordeaux{
+    background-color: #800000;
+    border-top-left-radius: 100px;
+    @include button;
+    }
+    &--plum{
+    background-color: #8B00FF;
+    border-top-left-radius: 100px;
+    @include button;
+    }
+    &--pine-green{
+    background-color: #228B22;
+    border-top-left-radius: 100px;
+    @include button;
+    }
+    &--sky-blue{
+    background-color: #00BFFF;
+    border-top-left-radius: 100px;
+    @include button;
+    }
+    &--duck-blue{
+    background-color: #008080;
+    border-top-left-radius: 100px;
+    @include button;
+    }
+    &--gold{
+    background-color: #FFD700;
+    border-top-left-radius: 100px;
+    @include button;
     }
     &--light{
         opacity: 1;
