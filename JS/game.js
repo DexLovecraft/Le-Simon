@@ -10,12 +10,12 @@ let buttons = document.getElementsByClassName('button') // DOM element useful fo
 let roundStep = 3 
 let numberOfClick = -1
 let score = 0
-let check = false
 let numberOfsequence = 0
-let highscore = 0
-// game mechanics variable 
-
+let highscore = 0// game mechanics variable 
+let difficultyLenght = 7
 //functions declaration
+
+
 
 // Function to random a list of number, push into sequenceAnswer
 const getRandomInt = (max) => {
@@ -34,8 +34,8 @@ const randomFlash = (index) => {
 
 
   // Trigger function to the game who check in which phase of game user is 
-const newGame = (roundStep) => {
-    if (roundStep <= 3){
+const newGame = (Step, difficulty) => {
+    if (Step <= 3){
       sequenceAnswer = []
         for(i = 0; i != 3; i++){
             getRandomInt(4)
@@ -44,7 +44,7 @@ const newGame = (roundStep) => {
         sequence(sequenceAnswer)
         
     }
-    else if (roundStep > 7){
+    else if (Step > difficulty){
         replay()
     }
     else{
@@ -64,8 +64,29 @@ const sequence = (list) => {
     },1100 * roundStep)
 }
 
+const verif = () => {
+  if(sequenceAnswer[numberOfClick] !== userSequenceInput[numberOfClick]){
+    roundStep = 3
+    numberOfClick = -1
+    lose()
+  }
+  else if(userSequenceInput.length == roundStep){
+    if(userSequenceInput.every((value, index) => value === sequenceAnswer[index])){
+      numberOfClick = -1
+      roundStep = roundStep + 1
+      win()
+    }
+    else{
+      roundStep = 3
+      numberOfClick = -1
+      lose()
+    }
+  }
+}
+
 //series of four function who do the same, they enlight the respective button, push they're index into userSequenceInput and trigger The verifcation function
- const redClick = () => {
+
+/*const redClick = () => {
       red.classList.toggle('button--light')
       red.classList.toggle('button--press')
     setTimeout(() =>{
@@ -74,24 +95,7 @@ const sequence = (list) => {
     },200)
     userSequenceInput.push(0)
     numberOfClick = numberOfClick + 1
-
-    if(sequenceAnswer[numberOfClick] !== userSequenceInput[numberOfClick]){
-      roundStep = 3
-      numberOfClick = -1
-      lose()
-    }
-    else if(userSequenceInput.length == roundStep){
-      if(userSequenceInput.every((value, index) => value === sequenceAnswer[index])){
-        numberOfClick = -1
-        roundStep = roundStep + 1
-        win()
-      }
-      else{
-        roundStep = 3
-        numberOfClick = -1
-        lose()
-      }
-    }
+    verif()
     
 }
 
@@ -104,24 +108,7 @@ const sequence = (list) => {
     },200)
     userSequenceInput.push(1)
     numberOfClick = numberOfClick + 1
-
-    if(sequenceAnswer[numberOfClick] !== userSequenceInput[numberOfClick]){
-      roundStep = 3
-      numberOfClick = -1
-      lose()
-    }
-    else if(userSequenceInput.length == roundStep){
-      if(userSequenceInput.every((value, index) => value === sequenceAnswer[index])){
-        numberOfClick = -1
-        roundStep = roundStep + 1
-        win()
-      }
-      else{
-        roundStep = 3
-        numberOfClick = -1
-        lose()
-      }
-    }
+    verif()
 }
 
  const blueClick = () => {
@@ -133,24 +120,7 @@ const sequence = (list) => {
     },200)
     userSequenceInput.push(2)
     numberOfClick = numberOfClick + 1
-
-    if(sequenceAnswer[numberOfClick] !== userSequenceInput[numberOfClick]){
-      roundStep = 3
-      numberOfClick = -1
-      lose()
-    }
-    else if(userSequenceInput.length == roundStep){
-      if(userSequenceInput.every((value, index) => value === sequenceAnswer[index])){
-        numberOfClick = -1
-        roundStep = roundStep + 1
-        win()
-      }
-      else{
-        roundStep = 3
-        numberOfClick = -1
-        lose()
-      }
-    }
+    verif()
 }
 
 const greenClick = () => {
@@ -162,25 +132,8 @@ const greenClick = () => {
     },200)
     userSequenceInput.push(3)
     numberOfClick = numberOfClick + 1
-
-    if(sequenceAnswer[numberOfClick] !== userSequenceInput[numberOfClick]){
-      roundStep = 3
-      numberOfClick = -1
-      lose()
-    }
-    else if(userSequenceInput.length == roundStep){
-      if(userSequenceInput.every((value, index) => value === sequenceAnswer[index])){
-        numberOfClick = -1
-        roundStep = roundStep + 1
-        win()
-      }
-      else{
-        roundStep = 3
-        numberOfClick = -1
-        lose()
-      }
-    }
-}
+    verif()
+}*/
 
 
 //the two function if the user win or lose at the game. that flash the background in function and they both trigger newGame but with different reinit. 
@@ -230,7 +183,7 @@ const replay = () => {
   },1500)
 } 
 
-const game = () => {
+/*const game = () => {
   // independant event for removal later
   red.addEventListener('click', redClick)
   yellow.addEventListener('click', yellowClick)
@@ -239,10 +192,53 @@ const game = () => {
 }
 
 const eventRemover = () => {
-  red.removeEventListener('click', redClick)
-  yellow.removeEventListener('click', yellowClick)
-  blue.removeEventListener('click', blueClick)
-  green.removeEventListener('click', greenClick)
+  for (const color of colors) {
+    const button = document.querySelector(`#${color}`)
+    button.removeEventListener('click', handleColorButtonClick)
+  }
+}*/
+const colors = ['red', 'yellow', 'blue', 'green', 'orange', 'purple', 'pink', 'teal', 'maroon']
+
+const colorClick = (color) => {
+  const index = colors.indexOf(color)
+  if (index === -1) {
+    return
+  }
+
+  const button = document.querySelector(`#${color}`)
+  button.classList.toggle('button--light')
+  button.classList.toggle('button--press')
+
+  setTimeout(() => {
+    button.classList.toggle('button--light')
+    button.classList.toggle('button--press')
+  }, 200)
+
+  userSequenceInput.push(index)
+  numberOfClick = numberOfClick + 1
+  verif()
+}
+
+const handleColorButtonClick = (event) => {
+  colorClick(event.target.id)
+}
+
+const game = () => {
+  for (const color of colors) {
+    const button = document.querySelector(`#${color}`)
+    if (button !== null) {
+      button.addEventListener('click', handleColorButtonClick)
+    }
+  }
+}
+
+const eventRemover = () => {
+  for (const color of colors) {
+    const button = document.querySelector(`#${color}`)
+    if (button !== null) {
+      button.removeEventListener('click', handleColorButtonClick)
+    }
+  }
 }
 
 //Display scdore on web page
@@ -254,7 +250,7 @@ const scoreDisplay = () => {
 
 //launch of new game
 setTimeout(() => {
-  newGame(roundStep)
+  newGame(roundStep, difficultyLenght)
 }, 2000)
 
 
