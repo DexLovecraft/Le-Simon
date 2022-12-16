@@ -42,6 +42,7 @@ const newGame = (Step) => {
         
     }
     else if (Step > difficultyLenght){
+      replay()
     }
     else{
         getRandomInt(16)

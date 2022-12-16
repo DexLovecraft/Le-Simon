@@ -66,19 +66,19 @@ html , body{
     border-radius: 10%;
     display: grid;
     &--easy{
-        grid-template-columns: 7.5% 1fr 5% 1fr 7.5%;
+        grid-template-columns: 5% 1fr 5% 1fr 5%;
         grid-template-rows: 5% 1fr 5% 1fr 5%;
         grid-column-gap: 0px;
         grid-row-gap: 0px;
     }
     &--medium{
-        grid-template-columns: 7.5% 1fr 5% 1fr 5% 1fr 7.5%;
+        grid-template-columns: 5% 1fr 5% 1fr 5% 1fr 5%;
         grid-template-rows: 5% 1fr 5% 1fr 5% 1fr 5%;
         grid-column-gap: 0px;
         grid-row-gap: 0px;
     }
     &--hard{
-        grid-template-columns: 7.5% 1fr 5% 1fr 5% 1fr 5% 1fr 7.5%;
+        grid-template-columns: 5% 1fr 5% 1fr 5% 1fr 5% 1fr 5%;
         grid-template-rows: 5% 1fr 5% 1fr 5% 1fr 5% 1fr 5%;
         grid-column-gap: 0px;
         grid-row-gap: 0px;
@@ -129,7 +129,7 @@ html , body{
     grid-area: 6 / 4 / 7 / 5;
     }
     &--maroon{
-    background-color: #800000;
+    background-color: #735514;
     @include button;
     grid-area: 6 / 6 / 7 / 7; 
     }
@@ -148,8 +148,8 @@ html , body{
     @include button;
     grid-area: 6 / 8 / 7 / 9;
     }
-    &--pine-green{
-    background-color: #228B22;
+    &--mint-green{
+    background-color: #1fdb32;
     @include button;
     grid-area: 8 / 2 / 9 / 3;
     }
