@@ -2,20 +2,17 @@
 
 let userSequenceInput = [] // user input list
 let sequenceAnswer = [] // list to compare with input
-let red = document.getElementById('red')
-let green = document.getElementById('green')
-let yellow = document.getElementById('yellow')
-let blue = document.getElementById('blue')
 let buttons = document.getElementsByClassName('button') // DOM element useful fot functions
+const colors = ['red', 'yellow', 'blue', 'green', 'orange', 'purple', 'pink', 'teal', 'maroon']
 let roundStep = 3 
 let numberOfClick = -1
 let score = 0
 let numberOfsequence = 0
 let highscore = 0// game mechanics variable 
-let difficultyLenght = 7
+const difficultyLenght = 9
 //functions declaration
 
-
+console.log(buttons)
 
 // Function to random a list of number, push into sequenceAnswer
 const getRandomInt = (max) => {
@@ -34,21 +31,20 @@ const randomFlash = (index) => {
 
 
   // Trigger function to the game who check in which phase of game user is 
-const newGame = (Step, difficulty) => {
+const newGame = (Step) => {
     if (Step <= 3){
       sequenceAnswer = []
-        for(i = 0; i != 3; i++){
-            getRandomInt(4)
+        for(let i = 0; i != 3; i++){
+            getRandomInt(9)
         }
         //console.log('depart '+ sequenceAnswer)
         sequence(sequenceAnswer)
         
     }
-    else if (Step > difficulty){
-        replay()
+    else if (Step > difficultyLenght){
     }
     else{
-        getRandomInt(4)
+        getRandomInt(9)
         //console.log('etape +1 '+ sequenceAnswer)
         sequence(sequenceAnswer)
     }
@@ -56,11 +52,11 @@ const newGame = (Step, difficulty) => {
 
 //function that call random Flash and after lauch the game
 const sequence = (list) => {
-    for (nbr in list){
+    for (let nbr in list){
         randomFlash(nbr)
     }
     setTimeout(() => {
-       game(i)
+       game()
     },1100 * roundStep)
 }
 
@@ -129,9 +125,7 @@ const replay = () => {
   setTimeout(() => {
     newGame(roundStep)
   },1500)
-} 
-
-const colors = ['red', 'yellow', 'blue', 'green', 'orange', 'purple', 'pink', 'teal', 'maroon']
+}
 
 const colorClick = (color) => {
   const index = colors.indexOf(color)

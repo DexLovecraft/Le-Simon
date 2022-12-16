@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="FR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Le Simon</title>
+</head>
+<body class="background">
+    <header>
+        <img class="logo" src="../Images/logo.svg" alt="logo">
+    </header>
+    <div class="game">
+        <div class="box box--easy">
+            <div class="button button--red button--top-left" id="red"></div>
+            <div class="button button--yellow button--top-right" id="yellow"></div>
+            <div class="button button--blue  button--bottom-left" id="blue"></div>
+            <div class="button button--green button--bottom-right" id="green"></div>
+        </div>
+        <div class="info">
+            <div class="info__child"><p>Votre Record est <span class="highscore__number">0</span></p></div>
+            <div class="info__child info__border"><p>Vous avez fait <span class="step__number">0</span> séquence(s) à la suite</p></div>
+            <div class="info__child "><p>Vous avez <span class="score__number">0</span> points</p></div>
+        </div>
+    </div>
+
+</body>
+
+<script type="module" src="../../JS/gameeasy.js"></script>
+
+</html>
