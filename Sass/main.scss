@@ -21,6 +21,34 @@ html , body{
     margin-bottom: 20px;
 }
 
+.difficulty{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    &__selection{
+        text-align: center;
+        padding: 0 75px;
+        margin-top: 15%;
+        font-size: 1.5rem;
+        border: solid 5px;
+        border-radius: 50px;
+        transition: scale 0.10s ease-in-out;
+        &--easy{
+            border-color: #009922;
+        }
+        &--medium{
+            border-color: #ff9500;
+        }
+        &--hard{
+            border-color: #FF0000;
+        }
+        &--press{
+            scale: 0.985;
+        }
+    }
+}
+
 .game{
     display: flex;
     flex-direction: column-reverse;
@@ -36,95 +64,109 @@ html , body{
     aspect-ratio: 1/1;
     background-color: rgb(49, 49, 49);
     border-radius: 10%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    &__top{
-        width: 90%;
-        aspect-ratio: 2/1;
-        margin-left: auto;
-        margin-right: auto;
-        display: flex;
-        justify-content: space-between;
-        overflow: hidden;
- }
-    &__bottom{
-        width: 90%;
-        aspect-ratio: 2/1;
-        margin-left: auto;
-        margin-right: auto;
-        display: flex;
-        justify-content: space-between;
-        overflow: hidden;
+    display: grid;
+    &--easy{
+        grid-template-columns: 7.5% 1fr 5% 1fr 7.5%;
+        grid-template-rows: 5% 1fr 5% 1fr 5%;
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+    }
+    &--medium{
+        grid-template-columns: 7.5% 1fr 5% 1fr 5% 1fr 7.5%;
+        grid-template-rows: 5% 1fr 5% 1fr 5% 1fr 5%;
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+    }
+    &--hard{
+        grid-template-columns: 7.5% 1fr 5% 1fr 5% 1fr 5% 1fr 7.5%;
+        grid-template-rows: 5% 1fr 5% 1fr 5% 1fr 5% 1fr 5%;
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
     }
 }
 
 .button{
     height: 100%;
-    aspect-ratio: 0.95/1;
+    aspect-ratio: 1/1;
     &--red{
     background-color: #FF0000;
     @include button;
+    grid-area: 2 / 2 / 3 / 3; 
     }
     &--yellow{
     background-color: #FFFF00;
     @include button;
+    grid-area: 2 / 4 / 3 / 5;
     }
     &--blue{
     background-color: #0000FF;
     @include button;
+    grid-area: 4 / 2 / 5 / 3;
     }
     &--green{
     background-color: #008000;
     @include button;
+    grid-area: 4 / 4 / 5 / 5; 
     }
     &--orange{
     background-color: #FFA500;
     @include button;
+    grid-area: 2 / 6 / 3 / 7;
     }
     &--purple{
     background-color: #800080;
     @include button;
+    grid-area: 4 / 6 / 5 / 7;
     }
     &--pink{
     background-color: #FF00FF;
     @include button;
+    grid-area: 6 / 2 / 7 / 3;
     }
     &--teal{
     background-color: #00FFFF;
     @include button;
+    grid-area: 6 / 4 / 7 / 5;
     }
     &--maroon{
     background-color: #800000;
     @include button;
+    grid-area: 6 / 6 / 7 / 7; 
     }
     &--grey{
     background-color: #808080;
     @include button;
+    grid-area: 2 / 8 / 3 / 9;
     }
     &--bordeaux{
     background-color: #800000;
     @include button;
+    grid-area: 4 / 8 / 5 / 9;
     }
     &--plum{
     background-color: #8B00FF;
     @include button;
+    grid-area: 6 / 8 / 7 / 9;
     }
     &--pine-green{
     background-color: #228B22;
     @include button;
+    grid-area: 8 / 2 / 9 / 3;
     }
     &--sky-blue{
     background-color: #00BFFF;
     @include button;
+    grid-area: 8 / 4 / 9 / 5;
     }
     &--duck-blue{
     background-color: #008080;
     @include button;
+    grid-area: 8 / 6 / 9 / 7;
     }
     &--gold{
     background-color: #FFD700;
     @include button;
+    grid-area: 8 / 8 / 9 / 9;
     }
     &--top-left{
         border-top-left-radius: 100px;
@@ -178,4 +220,3 @@ html , body{
     }
 }
 
-//768
