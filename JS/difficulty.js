@@ -13,18 +13,18 @@ const easyMode = () => {
 }
 
 const mediumMode = () => {
-    easyButton.classList.toggle('button--press')
+    mediumButton.classList.toggle('button--press')
      setTimeout(() => {
-        easyButton.classList.toggle('button--press')
+        mediumButton.classList.toggle('button--press')
         window.location.assign("./Public/pages/medium.html")
      }, 300)
      
 }
 
 const hardMode = () => {
-    easyButton.classList.toggle('button--press')
+    hardButton.classList.toggle('button--press')
      setTimeout(() => {
-        easyButton.classList.toggle('button--press')
+        hardButton.classList.toggle('button--press')
         window.location.assign("./Public/pages/hard.html")
      }, 300)
 }
