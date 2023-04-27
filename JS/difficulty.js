@@ -2,6 +2,11 @@ let easyButton = document.getElementById('easy')
 let mediumButton = document.getElementById('medium')
 let hardButton = document.getElementById('hard')
 
+let highscore = localStorage.getItem("highscore")
+if (highscore === null){
+  localStorage.setItem("highscore", 0)
+}
+
 //window.location.assign("https://www.example.com");
 
 const easyMode = () => {
@@ -42,3 +47,10 @@ const eventTrigger = () => {
 }
 
 eventTrigger()
+
+let test = localStorage.setItem('score', 2)
+let test2 = localStorage.setItem('score2', 3)
+localStorage.setItem('score2', 4)
+console.log(localStorage.getItem("score"))
+console.log(localStorage.getItem("score2"))
+console.log(localStorage["score"])

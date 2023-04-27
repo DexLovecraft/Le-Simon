@@ -8,7 +8,7 @@ let roundStep = 3
 let numberOfClick = -1
 let score = 0
 let numberOfsequence = 0
-let highscore = 0// game mechanics variable 
+let highscore = localStorage.getItem("highscore")// game mechanics variable 
 const difficultyLenght = 9
 //functions declaration
 
@@ -91,7 +91,7 @@ const lose = () => {
     userSequenceInput = []
    sequenceAnswer = []
    if(score > highscore){
-    highscore = score
+      highscore = localStorage.setItem("highscore", score)
    }
    score = 0 
    numberOfsequence = 0
@@ -174,10 +174,11 @@ const eventRemover = () => {
 const scoreDisplay = () => {
   document.getElementsByClassName('score__number')[0].innerHTML = score
   document.getElementsByClassName('step__number')[0].innerHTML = numberOfsequence
-  document.getElementsByClassName('highscore__number')[0].innerHTML = highscore
+  document.getElementsByClassName('highscore__number')[0].innerHTML = localStorage.getItem("highscore")
 } 
 
 //launch of new game
+scoreDisplay()
 setTimeout(() => {
   newGame(roundStep, difficultyLenght)
 }, 2000)
